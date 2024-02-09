@@ -1,7 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import Slide from './Slide.jsx'
+import Navbar from './Navbar.jsx';
+
 
 export default function App() {
-  return 
+  
+
+  return (
+    <>
+			<div className="h-screen bg-gradient-to-b from-black to-white">
+				<Navbar />
+
+      </div>
+    </>
+  )
 }
 

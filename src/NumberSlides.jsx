@@ -1,11 +1,17 @@
+import { useState } from 'react'
+
 export default function NumberSlides(){
-	const isHidden = false;
+	const [ isHidden, setIsHidden ] = useState(false)
+
+	function handleClick(){
+		setIsHidden(!isHidden);
+	}
 
 	return (
-		isHidden ?
-		 "" :
-		 <div className="absolute right-1 rounded-full text-white border-2">
-		 <p className="inline align-middle p-1">100</p>
-	 </div>
+		<div className="absolute right-1 rounded-full text-white border-2">
+		 	<button className="inline align-middle p-1" onClick={handleClick}>
+				{isHidden ? "Show slide numbers" : "Hide slide numbers"}
+			</button>
+	 	</div>
 	)
 }

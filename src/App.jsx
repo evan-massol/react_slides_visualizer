@@ -1,4 +1,4 @@
-import Slide from './Components/Library/Slide.jsx';
+import Slide from './Components/Slide.jsx';
 import Navbar from './Navbar.jsx';
 
 

@@ -1,4 +1,5 @@
 export default function Navbar({currentSlide, setCurrentSlide, children}){
+	
 
 	function handlePreviousSlide(){
 		if(currentSlide > 1)
@@ -11,7 +12,7 @@ export default function Navbar({currentSlide, setCurrentSlide, children}){
 	}
 
 	function handleCurrentSlide(event){
-		const value = parseInt(event.target.value);
+	  const value = parseInt(event.target.value);
       if (!isNaN(value)) {
         if (value > 10)
           setCurrentSlide(10);
@@ -24,6 +25,11 @@ export default function Navbar({currentSlide, setCurrentSlide, children}){
 
 	return (
 		<>
+			<div className="absolute left-3 top-2">
+				<button >
+					<img className="size-10 bg-white rounded-md" src="./public/list.svg"/>
+				</button>
+			</div>
 			<div className="flex justify-center font-normal border-2 rounded-xl py-2">
 				<button className="pr-2 pl-3 bg-neutral-500 rounded-l-lg p-0.5 text-2xl transition ease-in-out hover:bg-neutral-600 hover:text-white"
 				onClick={() => setCurrentSlide(1)}>

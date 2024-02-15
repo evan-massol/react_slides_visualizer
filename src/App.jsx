@@ -1,17 +1,17 @@
 import Slide from './components/Slide.jsx';
 import Navbar from './Navbar.jsx';
 import Deck from './Deck.jsx'
-import { SlideProvider } from './contexts/SlideContext.jsx';
+import { PagesProvider } from './contexts/PagesContext.jsx';
 
 export default function App() {
 
   return (
-    <SlideProvider>
-        <Navbar/>
-        <Deck >
-          <Slide title="Titre" content="Texte"/>
-        </Deck> 
-    </SlideProvider>
+    <PagesProvider>
+      <Navbar/>
+      <Deck >
+        <Slide title="Titre" content="Texte"/>
+      </Deck> 
+    </PagesProvider>
     
   )
 }

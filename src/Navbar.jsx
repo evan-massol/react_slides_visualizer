@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { SlideContext } from "./contexts/SlideContext";
+import { PagesContext } from "./contexts/PagesContext.jsx";
 
 export default function Navbar({children}){
-	const { currentSlide, isHidden, firstSlide, previousSlide,
-		handleCurrentSlide, nextSlide, lastSlide, changeDisplayNumberSlide } = useContext(SlideContext);
+	const { currentSlide, isHidden, firstSlide, previousSlide, nextSlide, 
+		lastSlide, changeDisplayNumberSlide, handleCurrentSlide } = useContext(PagesContext);
 	
 	return (
 		<>
@@ -45,16 +45,16 @@ export default function Navbar({children}){
 				</button>
 
 				<div className="absolute right-1 top-2.5 rounded-full text-white border-2">
-		 		<button className="inline align-middle p-1" onClick={changeDisplayNumberSlide}>
-				{
-					isHidden ? 
-					"Show slide numbers" 
-					: 
-					"Hide slide numbers"
-					}
-				</button>
-	 		</div>
+					<button className="inline align-middle p-1" onClick={changeDisplayNumberSlide}>
+					{
+						isHidden ? 
+						<i className="bi bi-eye-slash-fill p-1 not-italic text-lg"> : Number Slides</i>
+						: 
+						<i className="bi bi-eye-fill p-1 not-italic text-lg"> : Number Slides</i>
+						}
+					</button>
+	 			</div>
 			</div>
-		</>
+		</>	
 	)
 }

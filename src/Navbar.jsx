@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PagesContext } from "./contexts/PagesContext.jsx";
 
-export default function Navbar({children}){
+export default function Navbar(){
 	const { currentSlide, isHidden, firstSlide, previousSlide, nextSlide, 
 		lastSlide, changeDisplayNumberSlide, handleCurrentSlide } = useContext(PagesContext);
 	

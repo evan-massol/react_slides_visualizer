@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { slides } from "../Deck"; //TODO: Max number of slides
 
 export const PagesContext = createContext(null);
 

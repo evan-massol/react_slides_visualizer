@@ -9,7 +9,7 @@ export default function App() {
     <PagesProvider>
       <Navbar/>
       <Deck >
-        <Slide title="Titre" content="Texte"/>
+        <Slide title="Titre" text="Texte"/>
       </Deck> 
     </PagesProvider>
     

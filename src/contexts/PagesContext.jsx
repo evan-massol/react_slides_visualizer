@@ -52,7 +52,7 @@ export function PagesProvider({children}){
 			document.removeEventListener("keydown", handleKey);
 		}
 
-	}, [handlePreviousSlide, handleNextSlide]);
+	}, [currentSlide]);
 
 	const firstSlide = () => setCurrentSlide(1);
 	const previousSlide = () => handlePreviousSlide();

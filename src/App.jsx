@@ -8,9 +8,7 @@ export default function App() {
   return (
     <PagesProvider>
       <Navbar/>
-      <Deck >
-        <Slide/>
-      </Deck> 
+      <Deck />
     </PagesProvider>
     
   )

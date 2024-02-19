@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { slides } from "../Deck";;
 
 export const PagesContext = createContext(null);
@@ -28,6 +28,31 @@ export function PagesProvider({children}){
           setCurrentSlide(value);
 		}
 	}
+
+	useEffect(() =>{
+		function handleKey(event){
+			switch(event.key){
+				case "ArrowLeft":
+					handlePreviousSlide();
+					break;
+				case "ArrowRight":
+					handleNextSlide();
+					break;
+				case " ":
+					handleNextSlide();
+					break;
+				default:
+					break;
+			}
+		}
+
+		document.addEventListener("keydown", handleKey);
+
+		return () => {
+			document.removeEventListener("keydown", handleKey);
+		}
+
+	}, [handlePreviousSlide, handleNextSlide]);
 
 	const firstSlide = () => setCurrentSlide(1);
 	const previousSlide = () => handlePreviousSlide();

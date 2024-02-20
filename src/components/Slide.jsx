@@ -7,7 +7,7 @@ export default function Slide({children}) {
 	return (
 		<>
 			{children}
-			{!isHidden && <div id="numPage" className="absolute bottom-0 right-0 p-4 text-base">{currentSlide}</div>}
+			{!isHidden && <div id="numPage" className="absolute bottom-0 right-0 p-4 text-lg">{currentSlide}</div>}
 		</>
 	)
 }

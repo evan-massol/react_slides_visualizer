@@ -13,33 +13,33 @@ export default function Navbar(){
 				</button>
 			</div>
 			<div className="flex justify-center font-normal border-2 rounded-xl py-2">
-				<button className="pr-2 pl-3 bg-neutral-500 rounded-l-lg p-0.5 text-2xl transition ease-in-out hover:bg-neutral-600 hover:text-white"
+				<button className="pr-2 pl-3 bg-white rounded-l-lg p-0.5 text-2xl transition ease-in-out hover:bg-neutral-500 hover:text-white"
 					onClick={firstSlide}>
 					&laquo;
 				</button>
 
-				<button className="pr-2 pl-2 bg-neutral-500 p-0.5 text-2xl transition ease-in-out hover:bg-neutral-600 hover:text-white" 
+				<button className="pr-2 pl-2 bg-white p-0.5 text-2xl transition ease-in-out hover:bg-neutral-500 hover:text-white" 
 					onClick={previousSlide}>
 					&lsaquo;
 				</button>
 
-				<div className="pr-1 pl-1 bg-neutral-500 text-sm">
+				<div className="pr-1 pl-1 bg-white text-sm">
 					<input type="number"
 						inputMode="numeric"
 						value={currentSlide}
-						className="inline-block text-center rounded bg-neutral-500 hover:bg-neutral-600 transition ease
+						className="inline-block text-center rounded selection:text-white selection:bg-black  bg-white hover:bg-neutral-500 transition ease
 							w-10 py-1 align-middle m-0 text-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none
 						[&::-webkit-inner-spin-button]:appearance-none outline-none" 
 						onChange={(e) => handleCurrentSlide(e)}
 					/>
 				</div>
 
-				<button className="pl-2 pr-2 bg-neutral-500 p-0.5 text-2xl transition ease-in-out hover:bg-neutral-600 hover:text-white"
+				<button className="pl-2 pr-2 bg-white p-0.5 text-2xl transition ease-in-out hover:bg-neutral-500 hover:text-white"
 					onClick={nextSlide}>
 					&rsaquo;
 				</button>
 
-				<button className="pl-2 pr-3 bg-neutral-500 rounded-r-lg p-0.5 text-2xl transition ease-in-out hover:bg-neutral-600 hover:text-white"
+				<button className="pl-2 pr-3 bg-white rounded-r-lg p-0.5 text-2xl transition ease-in-out hover:bg-neutral-500 hover:text-white"
 					onClick={lastSlide}>
 					&raquo;
 				</button>

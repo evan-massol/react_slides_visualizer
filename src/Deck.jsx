@@ -1,28 +1,35 @@
 import Slide from "./components/Slide";
 import Title from "./components/Title";
 import Text from "./components/Text";
+import Image from "./components/Image";
 import { PagesContext } from "./contexts/PagesContext";
 import { useContext } from "react";
+import Figure from "./components/Figure";
 
 export const slides = [
 	<Slide >
-		<Title text="Titre de la slide 1" size="5xl"/>
-		<Text text="Voilà un premier texte" size="2xl" position="center" marginTop="2"/>
+		<Title text="Titre de la slide 1" size="h1"/>
+		<Text text="Voilà un premier texte" size="6" position="center" marginTop="96" marginBottom="2"/>
 	</Slide>,
 
 	<Slide>
-		<Title text="Titre de la slide 2" size="4xl"/>
-		<Text text="Voilà un second texte" size="lg" position="center" marginTop="2"/>
+		<Title text="Titre de la slide 2" size="h2"/>
+		<Text text="Voilà un second texte" size="4" position="center" marginTop="2"/>
 	</Slide>,
 
 	<Slide >
-		<Title text="Titre de la slide 3" size="2xl"/>
-		<Text text="Voilà un troisième texte" size="base" position="center" marginTop="2"/>
+		<Title text="Titre de la slide 3" size="h3"/>
+		<Text text="Voilà un troisième texte" size="2" position="center" marginTop="2"/>
 	</Slide>,
 
 	<Slide >
-		<Title text="Titre de la slide 4" size="xl"/>
-		<Text text="Voilà un quatrième texte" size="4xl" position="center" marginTop="2"/>
+		<Title text="Titre de la slide 4" size="h4"/>
+		<Image src="src/img/amogus.png"/>
+	</Slide>,
+
+	<Slide >
+		<Title text="Titre de la slide 5" size="h5"/>
+		<Figure src="src/img/amogus.png" text="Exemple de figure" position="right"/>
 	</Slide>
 ]
 

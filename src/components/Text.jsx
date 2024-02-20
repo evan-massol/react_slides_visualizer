@@ -1,7 +1,15 @@
+import classNames from "classnames";
+import { textColors, textSizes } from "../css/textStyle.js";
 
 
-export default function Text({text="", size="normal", position="left", marginTop="1", marginBottom="1"}){
-  const textStyle = `text-${size} text-${position} mt-${marginTop} mb-${marginBottom} w-auto break-words hyphens-auto`;
+export default function Text({text="Placeholder text", size="3", color="black", position="left"}){
+  const textStyle = classNames(
+                    `${textSizes[size]}
+                    ${textColors[color]}
+                    text-${position}
+                    w-auto 
+                    break-words 
+                    hyphens-auto`);
 
   return(
     <div className={textStyle}>

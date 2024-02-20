@@ -1,7 +1,15 @@
+import classNames from "classnames";
+import { textColors, titleStyles } from "../css/textStyle.js";
 
-
-export default function Title({text="", size="6xl", position="center"}){
-  const titleStyle = `text-${size} text-${position} w-auto break-words hyphens-auto`;
+export default function Title({text="Placeholder text", size="h1", color="black", position="center"}){
+  const titleStyle = classNames(
+                      `${titleStyles[size]}
+                      ${textColors[color]}
+                      text-${position}
+                      w-auto
+                      break-words
+                      hyphens-auto`
+                    );
 
   return(
     <div className={titleStyle}>

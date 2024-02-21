@@ -2,6 +2,7 @@ import Slide from "./components/Slide";
 import Title from "./components/Title";
 import Text from "./components/Text";
 import Image from "./components/Image";
+import Table from "./components/Table";
 import { PagesContext } from "./contexts/PagesContext";
 import { useContext } from "react";
 import Figure from "./components/Figure";
@@ -30,6 +31,13 @@ export const slides = [
 	<Slide >
 		<Title text="Titre de la slide 5" size="h5"/>
 		<Figure src="src/img/amogus.png" text="Exemple de figure" position="right"/>
+	</Slide>,
+
+	<Slide >
+		<Title text="Titre de la slide 6" size="h3"/>
+		<Table table={[["Ligne 1", "Contenu suivant", "blabblabla"],
+						["Ligne 2", "Contenu numéro 2", "autre chose"]]}
+						borderCellColor="green"/>
 	</Slide>
 ]
 

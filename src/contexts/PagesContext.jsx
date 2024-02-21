@@ -59,11 +59,12 @@ export function PagesProvider({children}){
 	const nextSlide = () => handleNextSlide();
 	const lastSlide = () => setCurrentSlide(slides.length);
 	const changeDisplayNumberSlide = () => setIsHidden(!isHidden);
+	const maxSlide = slides.length;
 
 	return(
 		<PagesContext.Provider
 			value={{currentSlide, isHidden, firstSlide, previousSlide,
-			handleCurrentSlide, nextSlide, lastSlide, changeDisplayNumberSlide}}>
+			handleCurrentSlide, nextSlide, lastSlide, changeDisplayNumberSlide, maxSlide}}>
 			<div className="font-sans min-w-64 max-h-screen h-screen bg-gradient-to-t from-white to-black overflow-hidden">
 				{children}
 			</div>

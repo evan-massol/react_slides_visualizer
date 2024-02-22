@@ -11,11 +11,6 @@ export default function Text({text="Placeholder text", size="3", color="black", 
                     break-words 
                     hyphens-auto`);
 
-  return(
-    <div className={textStyle}>
-			<p>{text}</p>
-		</div>
-    
-  )
+  return <p className={textStyle}>{text}</p>
   
 }

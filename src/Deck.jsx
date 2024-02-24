@@ -3,6 +3,8 @@ import Title from "./components/Title";
 import Text from "./components/Text";
 import Image from "./components/Image";
 import Table from "./components/Table";
+import NumberedList from "./components/NumberedList";
+import BulletedList from "./components/BulletedList";
 import { PagesContext } from "./contexts/PagesContext";
 import { useContext } from "react";
 import Figure from "./components/Figure";
@@ -25,12 +27,12 @@ export const slides = [
 
 	<Slide >
 		<Title text="Titre de la slide 4" size="h4"/>
-		<Image src="src/img/amogus.png"/>
+		<Image src="/amogus.png"/>
 	</Slide>,
 
 	<Slide >
 		<Title text="Titre de la slide 5" size="h5"/>
-		<Figure src="src/img/amogus.png" text="Exemple de figure" position="right"/>
+		<Figure src="/amogus.png" text="Exemple de figure" position="right"/>
 	</Slide>,
 
 	<Slide >
@@ -38,6 +40,20 @@ export const slides = [
 		<Table table={[["Ligne 1", "Contenu suivant", "blabblabla"],
 						["Ligne 2", "Contenu numéro 2", "autre chose"]]}
 						borderCellColor="green"/>
+	</Slide>,
+	
+	<Slide >
+		<Title text="Titre de la slide 7" size="h5"/>
+		<NumberedList elements={["Première puce", 
+								 "Deuxième puce", 
+								 "Troisième puce"]} color="cyan" position="center" size="5"/>
+	</Slide>,
+
+	<Slide >
+	<Title text="Titre de la slide 7" size="h5"/>
+	<BulletedList elements={["Première puce", 
+							 "Deuxième puce", 
+							 "Troisième puce"]} color="cyan" position="center" size="5"/>
 	</Slide>
 ]
 

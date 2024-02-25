@@ -1,31 +1,21 @@
-import { createContext, useEffect, useState } from "react";
-import { slides } from "../Deck";;
+import { createContext, useEffect, useReducer } from "react";
+import { slides } from "../Deck";
+import reducer from "../reducers/PagesReducer";
 
 export const PagesContext = createContext(null);
 
+const initialState = {
+	currentSlide: 1,
+	isHidden: false
+};
+
 export function PagesProvider({children}){
-	const [ currentSlide, setCurrentSlide ] = useState(1);
-	const [ isHidden, setIsHidden ] = useState(false);
-
-	function handlePreviousSlide(){
-		if(currentSlide > 1)
-			setCurrentSlide(currentSlide - 1)
-	}
-
-	function handleNextSlide(){
-		if(currentSlide < slides.length)
-			setCurrentSlide(currentSlide + 1);
-	}
+	const [ state, dispatch ] = useReducer(reducer, initialState);
 
 	const handleCurrentSlide = (event) => {
-	  const value = parseInt(event.target.value);
+	 	const value = parseInt(event.target.value);
       if (!isNaN(value)) {
-        if (value > slides.length)
-          setCurrentSlide(slides.length);
-        else if (value < 1)
-        	setCurrentSlide(1);
-        else
-          setCurrentSlide(value);
+        dispatch({type: "handleSlide", slideNumber: value});
 		}
 	}
 
@@ -33,14 +23,16 @@ export function PagesProvider({children}){
 		function handleKey(event){
 			switch(event.key){
 				case "ArrowLeft":
-					handlePreviousSlide();
+					dispatch({type : "previousSlide"});
 					break;
+
 				case "ArrowRight":
-					handleNextSlide();
+					dispatch({type : "nextSlide"});
 					break;
 				case " ":
-					handleNextSlide();
+					dispatch({type : "nextSlide"});
 					break;
+
 				default:
 					break;
 			}
@@ -52,19 +44,13 @@ export function PagesProvider({children}){
 			document.removeEventListener("keydown", handleKey);
 		}
 
-	}, [currentSlide]);
-
-	const firstSlide = () => setCurrentSlide(1);
-	const previousSlide = () => handlePreviousSlide();
-	const nextSlide = () => handleNextSlide();
-	const lastSlide = () => setCurrentSlide(slides.length);
-	const changeDisplayNumberSlide = () => setIsHidden(!isHidden);
-	const maxSlide = slides.length;
+	});
 
 	return(
 		<PagesContext.Provider
-			value={{currentSlide, isHidden, firstSlide, previousSlide,
-			handleCurrentSlide, nextSlide, lastSlide, changeDisplayNumberSlide, maxSlide}}>
+			value={{ state,
+							 dispatch
+							 }}>
 			<div className="font-sans min-w-64 max-h-screen h-screen bg-gradient-to-t from-white to-black overflow-hidden">
 				{children}
 			</div>

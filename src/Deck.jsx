@@ -50,7 +50,7 @@ export const slides = [
 	</Slide>,
 
 	<Slide >
-	<Title text="Titre de la slide 7" size="h5"/>
+	<Title text="Titre de la slide 8" size="h5"/>
 	<BulletedList elements={["Première puce", 
 							 "Deuxième puce", 
 							 "Troisième puce"]} color="cyan" position="center" size="5"/>
@@ -58,11 +58,11 @@ export const slides = [
 ]
 
 export default function Deck(){
-	const { currentSlide } = useContext(PagesContext);
+	const { state } = useContext(PagesContext);
 
 	return (
 		<div className="h-96 relative bg-white mt-2 mr-14 ml-14 p-2 shadow-lg shadow-black">
-			{slides[currentSlide-1]}
+			{slides[state.currentSlide-1]}
 		</div>
 	)
 }

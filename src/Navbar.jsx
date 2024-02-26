@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PagesContext } from "./contexts/PagesContext.jsx";
+import { PagesContext } from "./contexts/PageContext";
 
 export default function Navbar(){
 	const { state, dispatch } = useContext(PagesContext);
@@ -8,28 +8,28 @@ export default function Navbar(){
         dispatch({ type: "firstSlide" });
     };
 
-    const handlePreviousSlide = () => {
-        dispatch({ type: "previousSlide" });
-    };
+	const handlePreviousSlide = () => {
+			dispatch({ type: "previousSlide" });
+	};
 
-    const handleNextSlide = () => {
-        dispatch({ type: "nextSlide" });
-    };
+	const handleNextSlide = () => {
+			dispatch({ type: "nextSlide" });
+	};
 
-    const handleLastSlide = () => {
-        dispatch({ type: "lastSlide" });
-    };
+	const handleLastSlide = () => {
+			dispatch({ type: "lastSlide" });
+	};
 
-    const changeDisplayNumberSlide = () => {
-        dispatch({ type: "toggleHidden" });
-    };
-    
-    const handleInputChange = (event) => {
-        const value = parseInt(event.target.value);
-        if (!isNaN(value)) {
-            dispatch({ type: "handleSlide", slideNumber: value });
-        }
-    };
+	const changeDisplayNumberSlide = () => {
+			dispatch({ type: "toggleHidden" });
+	};
+	
+	const handleInputChange = (event) => {
+			const value = parseInt(event.target.value);
+			if (!isNaN(value)) {
+					dispatch({ type: "handleSlide", slideNumber: value });
+			}
+	};
 
 	return (
 		<>

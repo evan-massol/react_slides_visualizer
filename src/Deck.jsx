@@ -2,12 +2,14 @@ import Slide from "./components/Slide";
 import Title from "./components/Title";
 import Text from "./components/Text";
 import Image from "./components/Image";
+import Figure from "./components/Figure";
 import Table from "./components/Table";
 import NumberedList from "./components/NumberedList";
 import BulletedList from "./components/BulletedList";
-import { PagesContext } from "./contexts/PagesContext";
+import SlideTwoColumns from "./components/SlideTwoColumns";
+import { PagesContext } from "./contexts/PageContext";
 import { useContext } from "react";
-import Figure from "./components/Figure";
+
 
 export const slides = [
 	<Slide >
@@ -50,11 +52,16 @@ export const slides = [
 	</Slide>,
 
 	<Slide >
-	<Title text="Titre de la slide 8" size="h5"/>
-	<BulletedList elements={["Première puce", 
+		<Title text="Titre de la slide 8" size="h5"/>
+		<BulletedList elements={["Première puce", 
 							 "Deuxième puce", 
 							 "Troisième puce"]} color="cyan" position="center" size="5"/>
-	</Slide>
+	</Slide>,
+
+	<SlideTwoColumns>
+		<Title id="1" text="Titre de la slide 3" size="h3"/>
+		<Text id="2" text="Voilà un troisième texte" size="2" position="center" marginTop="2"/>
+	</SlideTwoColumns>,
 ]
 
 export default function Deck(){

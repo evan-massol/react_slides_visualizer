@@ -1,0 +1,1 @@
+import reactSyntaxHighlighter from "react-syntax-highlighter";

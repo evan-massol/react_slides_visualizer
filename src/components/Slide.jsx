@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { PagesContext } from "../contexts/PagesContext"
+import { PagesContext } from "../contexts/PageContext";
 import { slides } from "../Deck";
 
 export default function Slide({children}) {

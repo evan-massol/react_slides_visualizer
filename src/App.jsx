@@ -1,6 +1,6 @@
 import Navbar from './Navbar.jsx';
 import Deck from './Deck.jsx'
-import { PagesProvider } from './contexts/PagesContext.jsx';
+import { PagesProvider } from './contexts/PagesProvider.jsx';
 
 export default function App() {
 

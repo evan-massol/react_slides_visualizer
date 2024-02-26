@@ -1,8 +1,6 @@
-import { createContext, useEffect, useReducer } from "react";
-import { slides } from "../Deck";
+import { useEffect, useReducer } from "react";
 import reducer from "../reducers/PagesReducer";
-
-export const PagesContext = createContext(null);
+import { PagesContext } from "./PageContext";
 
 const initialState = {
 	currentSlide: 1,
@@ -11,13 +9,6 @@ const initialState = {
 
 export function PagesProvider({children}){
 	const [ state, dispatch ] = useReducer(reducer, initialState);
-
-	const handleCurrentSlide = (event) => {
-	 	const value = parseInt(event.target.value);
-      if (!isNaN(value)) {
-        dispatch({type: "handleSlide", slideNumber: value});
-		}
-	}
 
 	useEffect(() =>{
 		function handleKey(event){
@@ -29,6 +20,7 @@ export function PagesProvider({children}){
 				case "ArrowRight":
 					dispatch({type : "nextSlide"});
 					break;
+					
 				case " ":
 					dispatch({type : "nextSlide"});
 					break;

@@ -32,7 +32,7 @@ export default function Navbar(){
 	};
 
 	return (
-		<>
+		<nav>
 			<div className="absolute left-3 top-2">
 				<button>
 					<img className="size-10 bg-white rounded-md" src="/list.svg"/>
@@ -81,6 +81,6 @@ export default function Navbar(){
 					</button>
 	 			</div>
 			</div>
-		</>	
+		</nav>	
 	)
 }

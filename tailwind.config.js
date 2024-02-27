@@ -8,6 +8,9 @@ export default {
     extend: {
       height:{
         "96": "90%"
+      },
+      maxHeight:{
+        "96": "90%"
       }
     },
   },

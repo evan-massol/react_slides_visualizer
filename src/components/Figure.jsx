@@ -1,9 +1,11 @@
 import classNames from "classnames";
 import { textColors, textSizes } from "../css/textStyle";
 import { bgColors } from "../css/backgroundStyle";
+import { imageHeights } from "../css/imageHeights";
 
 export default function Figure({text="", textSize="3", textAlign="center", textColor="black", 
-                                src="public/react.svg", position="center", width, height, imageColor=""}){
+                                src="public/react.svg", position="center", imageColor="",
+                                height="center"}){
                                   
   const figureContainerStyle = classNames(
                       'flex',
@@ -13,6 +15,8 @@ export default function Figure({text="", textSize="3", textAlign="center", textC
                         'items-end': position === 'right',
                         'items-center': position === 'center'
                       },
+                      `sticky`,
+                      `${imageHeights[height]}`
                     );
 
   const imageStyle = classNames(`${bgColors[imageColor]}`)

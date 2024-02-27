@@ -27,10 +27,10 @@ export default function SlideTwoColumns({children}) {
 
 	return (
 		<>
-      <div className="inline-block w-1/2">
+      <div className="inline-block w-1/2 h-full">
         {leftColumnContent}
       </div>
-      <div className="inline-block w-1/2">
+      <div className="inline-block w-1/2 h-full">
         {rightColumnContent}
       </div>
 			{!state.isHidden && <div id="numPage" className="absolute bottom-0 right-0 p-4 text-lg">{state.currentSlide}/{slides.length}</div>}

@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import { bgColors } from "../css/backgroundStyle";
+import { imageHeights } from "../css/imageHeights";
 
-export default function Image({src="public/react.svg", width, height, color, position="center", imageColor=""}){
+export default function Image({src="public/react.svg", position="center", imageColor="", height="center"}){
+  
   const imageContainerStyle = classNames(
                       'flex',
                       'items-center',
@@ -9,10 +11,12 @@ export default function Image({src="public/react.svg", width, height, color, pos
                         'justify-start': position === 'left',
                         'justify-end': position === 'right',
                         'justify-center': position === 'center'
-                      }
+                      },
+                      `sticky`,
+                      `${imageHeights[height]}`
                      );
 
-  const imageStyle = classNames(`${bgColors[imageColor]}`)
+  const imageStyle = classNames(`${bgColors[imageColor]}`);
 
   return (
     <div className={imageContainerStyle}>

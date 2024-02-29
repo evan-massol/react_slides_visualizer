@@ -5,7 +5,7 @@ import { imageHeights } from "../css/imageHeights";
 
 export default function Figure({text="", textSize="3", textAlign="center", textColor="black", 
                                 src="public/react.svg", position="center", imageColor="",
-                                height="center"}){
+                                height="center", alt="Texte alternatif"}){
                                   
   const figureContainerStyle = classNames(
                       'flex',
@@ -30,7 +30,7 @@ export default function Figure({text="", textSize="3", textAlign="center", textC
   return (
       <div className={figureContainerStyle}>
         <figure>
-          <img src={src} className={imageStyle}/>
+          <img src={src} className={imageStyle} alt={alt}/>
           <figcaption className={textStyle}>{text}</figcaption>
         </figure>
       </div>

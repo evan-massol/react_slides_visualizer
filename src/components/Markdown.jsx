@@ -1,61 +1,122 @@
-import classNames from 'classnames';
 import ReactMarkdown from 'react-markdown';
 import Title from './Title';
-import { heightStyles } from '../css/textHeights';
 import Text from './Text';
+import remarkGfm from 'remark-gfm';
+import Code from './Code';
+import classNames from 'classnames';
+import { textColors, textSizes } from '../css/textStyle';
 
-export default function Markdown({position="center", colorTitle="black", colorText="black",
-                                  height="top", backgroundColorTitle="",
+export default function Markdown({titleColor="black", textColor="black",
+                                  backgroundColorTitle="",
                                   backgroundColorText="", textSize="3",
+                                  textPosition="left", titlePosition="center",
                                   marginTopTitle="auto", marginLeftTitle="auto", 
                                   marginBottomTitle="auto", marginRightTitle="auto",
                                   marginTopText="auto", marginLeftText="auto", 
                                   marginBottomText="auto", marginRightText="auto",
-                                  href="http://quelquepart", children}){
+                                  codeLanguage="cpp", codeTheme="vscDarkPlus",
+                                  codePosition="center", codeWrapLines=false,
+                                  tableAlign="left", quotePosition="left", children}){
 
-  const containerStyle = classNames(`text-${position} sticky ${heightStyles[height]}`);
+  const tableContainerStyle = classNames(
+                                `${textColors[textColor]}`,
+                                'flex',
+                                'items-center',
+                                {
+                                  'justify-start': tableAlign === 'left',
+                                  'justify-end': tableAlign === 'right',
+                                  'justify-center': tableAlign === 'center'
+                                }
+                              );
+
+  const quoteStyle = classNames(`text-${quotePosition} sticky`);
+
+  const listContainer = classNames(`text-${textPosition} sticky`)
+	
+	const unorderedStyle = classNames(`
+                              inline-block
+															${textSizes[textSize]}
+															${textColors[textColor]}
+															hyphens-auto
+                              list-disc
+                              list-inside
+															`);
+
+  const orderedStyle = classNames(`inline-block
+                                  ${textSizes[textSize]}
+                                  ${textColors[textColor]}
+                                  hyphens-auto 
+                                  list-decimal 
+                                  list-inside
+                                `);
 
   const components = {
-    h1: ({ node, ...props }) => <Title size="h1" color={colorTitle} backgroundColor={backgroundColorTitle}
+    h1: ({ node, ...props }) => <Title size="h1" color={titleColor} backgroundColor={backgroundColorTitle}
                                       marginTop={marginTopTitle} marginLeft={marginLeftTitle}
                                       marginBottom={marginBottomTitle} marginRight={marginRightTitle}
-                                      {...props} />,
+                                      position={titlePosition} {...props} />,
 
-    h2: ({ node, ...props }) => <Title size="h2" color={colorTitle} backgroundColor={backgroundColorTitle}
+    h2: ({ ...props }) => <Title size="h2" color={titleColor} backgroundColor={backgroundColorTitle}
                                       marginTop={marginTopTitle} marginLeft={marginLeftTitle}
                                       marginBottom={marginBottomTitle} marginRight={marginRightTitle}
-                                      {...props} />,
+                                      position={titlePosition} {...props} />,
 
-    h3: ({ node, ...props }) => <Title size="h3" color={colorTitle} backgroundColor={backgroundColorTitle}
+    h3: ({ ...props }) => <Title size="h3" color={titleColor} backgroundColor={backgroundColorTitle}
                                       marginTop={marginTopTitle} marginLeft={marginLeftTitle}
                                       marginBottom={marginBottomTitle} marginRight={marginRightTitle}
-                                      {...props} />,
+                                      position={titlePosition} {...props} />,
 
-    h4: ({ node, ...props }) => <Title size="h4" color={colorTitle} backgroundColor={backgroundColorTitle}
+    h4: ({ ...props }) => <Title size="h4" color={titleColor} backgroundColor={backgroundColorTitle}
                                       marginTop={marginTopTitle} marginLeft={marginLeftTitle}
                                       marginBottom={marginBottomTitle} marginRight={marginRightTitle}
-                                      {...props} />,
+                                      position={titlePosition} {...props} />,
 
-    h5: ({ node, ...props }) => <Title size="h5" color={colorTitle} backgroundColor={backgroundColorTitle}
+    h5: ({ ...props }) => <Title size="h5" color={titleColor} backgroundColor={backgroundColorTitle}
                                       marginTop={marginTopTitle} marginLeft={marginLeftTitle}
                                       marginBottom={marginBottomTitle} marginRight={marginRightTitle}
-                                      {...props} />,
+                                      position={titlePosition} {...props} />,
 
-    h6: ({ node, ...props }) => <Title size="h6" color={colorTitle} backgroundColor={backgroundColorTitle}
+    h6: ({ ...props }) => <Title size="h6" color={titleColor} backgroundColor={backgroundColorTitle}
                                       marginTop={marginTopTitle} marginLeft={marginLeftTitle}
                                       marginBottom={marginBottomTitle} marginRight={marginRightTitle}
-                                      {...props} />,
+                                      position={titlePosition} {...props} />,
 
-    a: ({ node, ...props }) => <a href={href} {...props}></a>,
+    a: ({ href, children }) => <a href={href}>{children}</a>,
 
-    p: ({ node, ...props }) => <Text size={textSize} color={colorText} backgroundColor={backgroundColorText}
+    p: ({ ...props }) => <Text size={textSize} color={textColor} backgroundColor={backgroundColorText}
                                       marginTop={marginTopText} marginLeft={marginLeftText}
                                       marginBottom={marginBottomText} marginRight={marginRightText}
-                                      {...props} />,
+                                      position={textPosition} {...props} />,
+  
+
+    blockquote: ({ ...props}) => <div className={quoteStyle}>
+                                    <blockquote className="bg-gray-100 border-l-4 border-gray-500 my-4 pl-px inline-block"
+                                        {...props}></blockquote>
+                                  </div>,
+
+    code: ({ ...props }) => <Code language={codeLanguage} position={codePosition} 
+                                  theme={codeTheme} wrapLines={codeWrapLines} {...props}/>,
+
+    table: ({ children }) => (
+      <div className={tableContainerStyle}>
+        <table className="table-auto border-collapse border border-gray-300">
+          {children}
+        </table>
+      </div>
+    ),
+
+    ul: ({  ...props }) => <div className={listContainer}>
+                              <ul className={unorderedStyle} {...props} />
+                            </div>,
+
+    ol: ({  ...props }) => <div className={listContainer}>
+                              <ol className={orderedStyle} {...props} />
+                            </div>
+
   };
 
   return (
-    <ReactMarkdown className={containerStyle} components={components}>
+    <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
       {children}
     </ReactMarkdown>
   )

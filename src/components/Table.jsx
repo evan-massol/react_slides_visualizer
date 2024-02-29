@@ -3,7 +3,7 @@ import { bgColors } from "../css/backgroundStyle";
 import { borderStyles } from "../css/tableStyle";
 import { textColors } from "../css/textStyle";
 
-export default function Table({table, align="center", alignCells="center", borderColor="black",
+export default function Table({table="", align="center", alignCells="center", borderColor="black",
                               borderCellColor="black", backgroundColor="", textColor="black"}){
 
   const tableContainerStyle = classNames(

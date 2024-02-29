@@ -31,12 +31,12 @@ export const slides = [
 
 	<Slide >
 		<Title size="h4">Titre de la slide 4</Title>
-		<Image src="/amogus.png"/>
+		<Image src="/amogus.png" />
 	</Slide>,
 
 	<Slide >
 		<Title size="h5">Titre de la slide 5</Title>
-		<Figure src="/amogus.png" text="SUS" position="right"/>
+		<Figure src="/amogus.png" text="Un exemple de figure" position="right"/>
 	</Slide>,
 
 	<Slide >
@@ -89,154 +89,184 @@ export default function Code({language="cpp", position="center", children}){
 		<Code language="renpy" position="center">{
 `layeredimage junichi base:
 
-at renpy.partial(Flatten, drawable_resolution = False)
+	at renpy.partial(Flatten, drawable_resolution = False)
 
-always "mod_assets/MPT/Junichi/Expressions/base.png"
+	always "mod_assets/MPT/Junichi/Expressions/base.png"
 
-group outfit:
-		attribute uniform default null
-		attribute casual null
+	group outfit:
+			attribute uniform default null
+			attribute casual null
 
-group mood:
-		attribute neut default null
-		attribute angr null
-		attribute cry null
-		attribute flus null
-		attribute happ null
-		attribute laug null
-		attribute nerv null
-		attribute pani null
-		attribute sad null
-		attribute sedu null
-		attribute shoc null
-		attribute vang null
-		attribute surp null
-		attribute worr null
-		attribute yand null
-
-
-group left:
-		attribute ldown default if_any(["uniform"]):
-				"mod_assets/MPT/Junichi/Poses/1l.png"
-		attribute lup if_any(["uniform"]):
-				"mod_assets/MPT/Junichi/Poses/2l.png"
-		attribute ldown default if_any(["casual"]):
-				"mod_assets/MPT/Junichi/Poses/1bl.png"
-		attribute lup if_all(["casual"]):
-				"mod_assets/MPT/Junichi/Poses/2bl.png"
+	group mood:
+			attribute neut default null
+			attribute angr null
+			attribute cry null
+			attribute flus null
+			attribute happ null
+			attribute laug null
+			attribute nerv null
+			attribute pani null
+			attribute sad null
+			attribute sedu null
+			attribute shoc null
+			attribute vang null
+			attribute surp null
+			attribute worr null
+			attribute yand null
 
 
-group right:
-		attribute rdown default if_any(["uniform"]):
-				"mod_assets/MPT/Junichi/Poses/1r.png"
-		attribute rup if_any(["uniform"]):
-				"mod_assets/MPT/Junichi/Poses/2r.png"
-		attribute rdown if_any(["casual"]):
-				"mod_assets/MPT/Junichi/Poses/1br.png"
-		attribute rup if_any(["casual"]):
-				"mod_assets/MPT/Junichi/Poses/2br.png"
+	group left:
+			attribute ldown default if_any(["uniform"]):
+					"mod_assets/MPT/Junichi/Poses/1l.png"
+			attribute lup if_any(["uniform"]):
+					"mod_assets/MPT/Junichi/Poses/2l.png"
+			attribute ldown default if_any(["casual"]):
+					"mod_assets/MPT/Junichi/Poses/1bl.png"
+			attribute lup if_all(["casual"]):
+					"mod_assets/MPT/Junichi/Poses/2bl.png"
 
 
-group nose:
-		attribute nose default if_any(["neut", "angr", "cry", "happ", "laug", "sad", "shoc", "vang", "surp", "worr", "yand"]):
-				"mod_assets/MPT/Junichi/Expressions/Nose/blush1.png" # default blush
-		attribute blush default if_any(["flus", "nerv", "pani", "sedu"]):
-				"mod_assets/MPT/Junichi/Expressions/Nose/blush2.png" # flustered blush
-		attribute noblush:
-				null
-
-		attribute n1:
-				"mod_assets/MPT/Junichi/Expressions/Nose/blush1.png" # default blush
-		attribute n2:
-				"mod_assets/MPT/Junichi/Expressions/Nose/blush2.png" # flustered blush
-				
-group mouth:
-		attribute cm default if_any(["neut", "flus", "sad"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mn.png" # neutral mouth
-		attribute cm default if_any(["happ", "nerv"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/ms.png" # smiling mouth
-		attribute om if_any(["happ", "laug", "sedu"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/ml.png" # laughing mouth
-		attribute om if_any(["neut", "worr", "sad", "flus", "nerv", ""]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mo.png" # open mouth
-		attribute om if_any(["yand", "pani", "surp", "cry"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/my.png" # wide mouth
-		attribute cm default if_any(["laug", "pani", "sedu", "yand"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mf.png" # smiling teeth mouth
-		attribute cm default if_any(["angr", "cry", "shoc", "vang", "surp","worr"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mm.png" # gitted teeth mouth
-		attribute om if_any(["angr", "vang", "shoc"]):
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mt.png" # wide mouth (angry)
-
-		attribute ms:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/ms.png" # smiling mouth
-		attribute mn:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mn.png" # neutral mouth
-		attribute ml:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/ml.png" # laughing mouth
-		attribute mo:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mo.png" # open mouth
-		attribute my:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/my.png" # wide mouth
-		attribute mf:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mf.png" # smiling teeth mouth
-		attribute mm:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mm.png" # gitted teeth mouth
-		attribute mt:
-				"mod_assets/MPT/Junichi/Expressions/Mouth/mt.png" # wide mouth (angry)
-
-group eyes:
-		attribute oe default if_any(["neut", "angr", "flus", "happ", "laug", "nerv", "sad", "sedu", "worr"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyes/en.png" # neutral eyes
-		attribute oe default if_any(["cry"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyes/ec.png" # crying eyes
-		attribute oe default if_any(["pani", "shoc", "vang", "surp", "yand"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyes/es.png" # wide eyes
-		attribute ce if_any(["cry"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyes/em.png" # closed eyes (crying)
-		attribute ce if_any(["neut", "angr", "flus", "happ", "laugh", "nerv", "sad", "sedu", "worr"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyes/er.png" # closed eyes
-		attribute ce if_any(["pani", "shoc", "vang", "surp", "yand"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyes/eh.png" # closed eyes (squinted)
-
-		attribute en:
-				"mod_assets/MPT/Junichi/Expressions/Eyes/en.png" # neutral eyes
-		attribute ec:
-				"mod_assets/MPT/Junichi/Expressions/Eyes/ec.png" # crying eyes
-		attribute es:
-				"mod_assets/MPT/Junichi/Expressions/Eyes/es.png" # wide eyes
-		attribute em:
-				"mod_assets/MPT/Junichi/Expressions/Eyes/em.png" # closed eyes (crying)
-		attribute er:
-				"mod_assets/MPT/Junichi/Expressions/Eyes/er.png" # closed eyes
-		attribute eh:
-				"mod_assets/MPT/Junichi/Expressions/Eyes/eh.png" # closed eyes (squinted)
+	group right:
+			attribute rdown default if_any(["uniform"]):
+					"mod_assets/MPT/Junichi/Poses/1r.png"
+			attribute rup if_any(["uniform"]):
+					"mod_assets/MPT/Junichi/Poses/2r.png"
+			attribute rdown if_any(["casual"]):
+					"mod_assets/MPT/Junichi/Poses/1br.png"
+			attribute rup if_any(["casual"]):
+					"mod_assets/MPT/Junichi/Poses/2br.png"
 
 
-group eyebrows:
-		attribute brow default if_any(["neut", "happ", "laug", "nerv", "sedu", "shoc", "flus"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyebrows/bn.png" # neutral eyebrows
-		attribute brow default if_any(["cry", "pani", "sad", "surp", "worr", "yand"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyebrows/br.png" # raised eyebrows
-		attribute brow default if_any(["angr", "vang"]):
-				"mod_assets/MPT/Junichi/Expressions/Eyebrows/ba.png" # lowered eyebrows
+	group nose:
+			attribute nose default if_any(["neut", "angr", "cry", "happ", "laug", "sad", "shoc", "vang", "surp", "worr", "yand"]):
+					"mod_assets/MPT/Junichi/Expressions/Nose/blush1.png" # default blush
+			attribute blush default if_any(["flus", "nerv", "pani", "sedu"]):
+					"mod_assets/MPT/Junichi/Expressions/Nose/blush2.png" # flustered blush
+			attribute noblush:
+					null
 
-		attribute bn:
-				"mod_assets/MPT/Junichi/Expressions/Eyebrows/bn.png" # neutral eyebrows
-		attribute br:
-				"mod_assets/MPT/Junichi/Expressions/Eyebrows/br.png" # raised eyebrows
-		attribute ba:
-				"mod_assets/MPT/Junichi/Expressions/Eyebrows/ba.png" # lowered eyebrows
+			attribute n1:
+					"mod_assets/MPT/Junichi/Expressions/Nose/blush1.png" # default blush
+			attribute n2:
+					"mod_assets/MPT/Junichi/Expressions/Nose/blush2.png" # flustered blush
+					
+	group mouth:
+			attribute cm default if_any(["neut", "flus", "sad"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mn.png" # neutral mouth
+			attribute cm default if_any(["happ", "nerv"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/ms.png" # smiling mouth
+			attribute om if_any(["happ", "laug", "sedu"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/ml.png" # laughing mouth
+			attribute om if_any(["neut", "worr", "sad", "flus", "nerv", ""]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mo.png" # open mouth
+			attribute om if_any(["yand", "pani", "surp", "cry"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/my.png" # wide mouth
+			attribute cm default if_any(["laug", "pani", "sedu", "yand"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mf.png" # smiling teeth mouth
+			attribute cm default if_any(["angr", "cry", "shoc", "vang", "surp","worr"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mm.png" # gitted teeth mouth
+			attribute om if_any(["angr", "vang", "shoc"]):
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mt.png" # wide mouth (angry)
+
+			attribute ms:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/ms.png" # smiling mouth
+			attribute mn:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mn.png" # neutral mouth
+			attribute ml:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/ml.png" # laughing mouth
+			attribute mo:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mo.png" # open mouth
+			attribute my:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/my.png" # wide mouth
+			attribute mf:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mf.png" # smiling teeth mouth
+			attribute mm:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mm.png" # gitted teeth mouth
+			attribute mt:
+					"mod_assets/MPT/Junichi/Expressions/Mouth/mt.png" # wide mouth (angry)
+
+	group eyes:
+			attribute oe default if_any(["neut", "angr", "flus", "happ", "laug", "nerv", "sad", "sedu", "worr"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyes/en.png" # neutral eyes
+			attribute oe default if_any(["cry"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyes/ec.png" # crying eyes
+			attribute oe default if_any(["pani", "shoc", "vang", "surp", "yand"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyes/es.png" # wide eyes
+			attribute ce if_any(["cry"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyes/em.png" # closed eyes (crying)
+			attribute ce if_any(["neut", "angr", "flus", "happ", "laugh", "nerv", "sad", "sedu", "worr"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyes/er.png" # closed eyes
+			attribute ce if_any(["pani", "shoc", "vang", "surp", "yand"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyes/eh.png" # closed eyes (squinted)
+
+			attribute en:
+					"mod_assets/MPT/Junichi/Expressions/Eyes/en.png" # neutral eyes
+			attribute ec:
+					"mod_assets/MPT/Junichi/Expressions/Eyes/ec.png" # crying eyes
+			attribute es:
+					"mod_assets/MPT/Junichi/Expressions/Eyes/es.png" # wide eyes
+			attribute em:
+					"mod_assets/MPT/Junichi/Expressions/Eyes/em.png" # closed eyes (crying)
+			attribute er:
+					"mod_assets/MPT/Junichi/Expressions/Eyes/er.png" # closed eyes
+			attribute eh:
+					"mod_assets/MPT/Junichi/Expressions/Eyes/eh.png" # closed eyes (squinted)
+
+
+	group eyebrows:
+			attribute brow default if_any(["neut", "happ", "laug", "nerv", "sedu", "shoc", "flus"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyebrows/bn.png" # neutral eyebrows
+			attribute brow default if_any(["cry", "pani", "sad", "surp", "worr", "yand"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyebrows/br.png" # raised eyebrows
+			attribute brow default if_any(["angr", "vang"]):
+					"mod_assets/MPT/Junichi/Expressions/Eyebrows/ba.png" # lowered eyebrows
+
+			attribute bn:
+					"mod_assets/MPT/Junichi/Expressions/Eyebrows/bn.png" # neutral eyebrows
+			attribute br:
+					"mod_assets/MPT/Junichi/Expressions/Eyebrows/br.png" # raised eyebrows
+			attribute ba:
+					"mod_assets/MPT/Junichi/Expressions/Eyebrows/ba.png" # lowered eyebrows
 		`}</Code>
 	</Slide>,
 
 	<Slide>
-		<Markdown colorTitle="red" marginBottom="10">{`## *Voilà un titre en Markdown*`}</Markdown>
-		<Markdown position="left">{
-`**Voilà du texte écrit en gras...**  
+		<Markdown titleColor="red" marginBottom="10">{`## Présentation du Markdown`}</Markdown>
+		<Markdown marginTopText="5" textPosition="center" tableAlign="center">{
+`**Voilà un texte en gras ainsi que _de l'italique en même temps_**  
 Comparé à un texte normal  
-[un lien](https://www.paqueriaud.fr/)
+*Mais aussi un texte en italique*  
+[Ainsi qu'un lien](http://amazon.fr)  
+Une liste non ordonnée, puis ordonnée:  
+
+* Premier 
+* Deuxième   
+  
+1. Premier élément  
+2. Deuxième élément
+3. Troisième élément  
+
+Un tableau:  
+| Alpha    | Bravo   |
+| -------- | ------- |
+| 中文       | Charlie |
+| 👩‍❤️‍👩 | Delta   |`}</Markdown>
+
+		<Markdown quotePosition="center">{`> Voilà une citation en Markdown`}</Markdown>
+		<Markdown textPosition="center">{`~~Du texte barré grâce au plugin Remark-gfm~~`}</Markdown>
+		<Markdown codePosition="center">{
+`~~~
+#include <iostream>
+
+using namespace std;
+
+int main(){
+	cout << "Bonjour React!" << endl;
+	return 0;
+}
+~~~
 `}</Markdown>
+		
 	</Slide>
 ]
 

@@ -2,27 +2,24 @@ import classNames from "classnames";
 import { bgColors } from "../css/backgroundStyle";
 import { borderStyles } from "../css/tableStyle";
 import { textColors } from "../css/textStyle";
+import { heightStyles } from "../css/textHeights";
 
-export default function Table({table="", align="center", alignCells="center", borderColor="black",
+export default function Table({table="", position="center", height="top", alignCells="center", borderColor="black",
                               borderCellColor="black", backgroundColor="", textColor="black"}){
 
   const tableContainerStyle = classNames(
-                              'flex',
-                              'items-center',
-                              {
-                                'justify-start': align === 'left',
-                                'justify-end': align === 'right',
-                                'justify-center': align === 'center'
-                              }
+                              `text-${position} sticky
+                              ${heightStyles[height]}`
                             );
 
   const tableStyle = classNames(`
+                    inline-block
                     ${bgColors[backgroundColor]}
                     ${borderStyles[borderColor]}
                     border
                     border-spacing-2
                     border-separate
-                    table-auto`)
+                    table-auto`);
 
   const cellStyle = classNames(`
                     border
@@ -34,7 +31,7 @@ export default function Table({table="", align="center", alignCells="center", bo
                       'text-center': alignCells === "center",
                       'text-left': alignCells === "left",
                       'text-right': alignCells === "right"
-                    })
+                    });
 
   const tableContent = table.map((row, index) => 
     <tr key={index}>
@@ -50,5 +47,5 @@ export default function Table({table="", align="center", alignCells="center", bo
         <tbody>{tableContent}</tbody>
       </table>
     </div>
-  )
+  );
 }

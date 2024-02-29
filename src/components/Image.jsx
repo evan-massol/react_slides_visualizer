@@ -19,8 +19,8 @@ export default function Image({src="public/react.svg", position="center", imageC
   const imageStyle = classNames(`${bgColors[imageColor]}`);
 
   return (
-    <div className={imageContainerStyle}>
+    <span className={imageContainerStyle}>
       <img src={src} className={imageStyle}/>
-    </div>
+    </span>
   )
 }

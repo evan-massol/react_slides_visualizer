@@ -9,41 +9,48 @@ import BulletedList from "./components/BulletedList";
 import SlideTwoColumns from "./components/SlideTwoColumns";
 import Code from "./components/Code";
 import Markdown from "./components/Markdown";
+import CenteredSlide from "./components/CenteredSlide";
 import { PagesContext } from "./contexts/PageContext";
 import { useContext } from "react";
 
 
 export const slides = [
 	<Slide >
-		<Title size="h1" marginBottom="2">Titre de la slide 1</Title>
-		<Text text="Voilà un premier texte" size="6" position="center" marginTop="96" marginBottom="2"/>
+		<Title size="h1">Titre de la slide 1</Title>
+		<Text size="6" position="center" height="center">
+			Voilà un premier texte
+		</Text>
 	</Slide>,
 
 	<Slide>
 		<Title size="h2">Titre de la slide 2</Title>
-		<Text text="Voilà un second texte" size="4" position="center" marginTop="2"/>
+		<Text size="5" position="center" height="center">
+			Voilà un second texte
+		</Text>
 	</Slide>,
 
-	<Slide >
+	<CenteredSlide >
 		<Title size="h3">Titre de la slide 3</Title>
-		<Text text="Voilà un troisième texte" size="2" position="center" marginTop="2"/>
-	</Slide>,
+		<Text size="4">
+			Voilà un troisième texte<Image src="/amogus.png" height="bottom"/>
+		</Text>
+	</CenteredSlide>,
 
 	<Slide >
 		<Title size="h4">Titre de la slide 4</Title>
-		<Image src="/amogus.png" />
+		<Image src="/amogus.png"/>
 	</Slide>,
 
 	<Slide >
 		<Title size="h5">Titre de la slide 5</Title>
-		<Figure src="/amogus.png" text="Un exemple de figure" position="right"/>
+		<Figure src="/amogus.png" text="Un exemple de figure"/>
 	</Slide>,
 
 	<Slide >
 		<Title size="h3">Titre de la slide 6</Title>
-		<Table table={[["Ligne 1", "Contenu suivant", "blabblabla"],
+		<Table table={[["Ligne 1", "Contenu suivant", "Lorem ipsum"],
 						["Ligne 2", "Contenu numéro 2", "autre chose"]]}
-						borderCellColor="green"/>
+						borderCellColor="cyan"/>
 	</Slide>,
 	
 	<Slide >
@@ -61,15 +68,18 @@ export const slides = [
 	</Slide>,
 
 	<SlideTwoColumns>
-		<Title id="1" size="h3">Titre de la slide 9 dans la colonne de gauche</Title>
-		<Text id="2" text="Voilà un troisième texte" size="2" position="center" marginTop="2"/>
+		<Title id="1" size="h3">Titre dans la colonne de gauche</Title>
+		<Text id="1" size="3" position="center" marginTop="2">
+			Un peu de code ne ferait pas de mal non?
+		</Text>
 		<Code id="1" language="jsx" position="center">{
 `import classNames from 'classnames';
 import { Prism } from 'react-syntax-highlighter';
 import * as styles from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { codeAlign } from '../css/codeAlign'
 
-export default function Code({language="cpp", position="center", theme="vscDarkPlus", wrapLines=false, children}){
+export default function Code({language="cpp", position="center", 
+                              theme="vscDarkPlus", wrapLines=false, children}){
 
   const containerStyle = classNames(\`\${codeAlign[position]} max-h-96 flex\`);
 
@@ -82,10 +92,60 @@ export default function Code({language="cpp", position="center", theme="vscDarkP
   )
 }
 		`}</Code>
+		<Title id="2" size="h3">Titre dans la colonne de droite</Title>
+		<Text id="2" size="3" position="center" marginTop="2">
+			Ce code montrant mon code pour les slides à deux colonnes possède la propriété wrapLines=True, les longues lignes sont coupées !
+		</Text>
+		<Code id="2" language="jsx" position="center" wrapLines={true}>{
+`import React, { useContext } from "react"
+import { PagesContext } from "../contexts/PageContext"
+import { slides } from "../Deck";
+import Text from "./Text";
+import classNames from "classnames";
+
+export default function SlideTwoColumns({children}) {
+	const { state } = useContext(PagesContext);
+  const leftColumnContent = [];
+  const rightColumnContent = [];
+
+  children.map((child, index) => {
+    const { id } = child.props;
+    
+    switch(id){
+      case "1":
+        //cloneElement permet d'attribuer une clé unique à chaque child renseigné dans le deck
+        leftColumnContent.push(React.cloneElement(child, { key: \`\${index}\` }));
+        break;
+      case "2":
+        rightColumnContent.push(React.cloneElement(child, { key: \`\${index}\` }));
+        break;
+      default:
+        leftColumnContent.push(<Text key={\`\${index}\`} position="center">Please use the attribute id='1' or id='2' in each children of 'SlideTwoColumns' to add the content into the first column or the second one.</Text>)
+        break;
+    }
+  });
+
+  const columnStyle1 = classNames(\`inline-block w-1/2 pb-12 h-full absolute left-0\`);
+
+  const columnStyle2 = classNames(\`inline-block w-1/2 pb-12 h-full absolute right-0\`);
+
+	return (
+		<>
+      <div className={columnStyle1}>
+        {leftColumnContent}
+      </div>
+      <div className={columnStyle2}>
+        {rightColumnContent}
+      </div>
+			{!state.isHidden && <div id="numPage" className="absolute bottom-0 right-0 p-4 text-lg">{state.currentSlide}/{slides.length}</div>}
+		</>
+	);
+}
+		`}</Code>
 	</SlideTwoColumns>,
 
 	<Slide >
-		<Title size="h3">Un peu de code !</Title>
+		<Title size="h3">Un peu de code d'un langage différent avec des sliders !</Title>
 		<Code language="renpy" position="center">{
 `layeredimage junichi base:
 
@@ -230,12 +290,11 @@ export default function Code({language="cpp", position="center", theme="vscDarkP
 		`}</Code>
 	</Slide>,
 
-	<Slide>
-		<Markdown titleColor="red" marginBottom="10">{`## Présentation du Markdown`}</Markdown>
-		<Markdown marginTopText="5" textPosition="center" tableAlign="center">{
-`**Voilà un texte en gras ainsi que _de l'italique en même temps_**  
-Comparé à un texte normal  
-*Mais aussi un texte en italique*  
+	<SlideTwoColumns>
+		<Markdown id="1" titleColor="red" marginBottom="10">{`## Présentation du Markdown`}</Markdown>
+		<Markdown id="1" marginTopText="5" textPosition="center" tableAlign="center">{
+`**Voilà un texte en gras ainsi que _de l'italique en même temps_** comparé à un texte normal  
+*Mais aussi un texte en italique et __en gras__*  
 [Ainsi qu'un lien](http://amazon.fr)  
 Une liste non ordonnée, puis ordonnée:  
 
@@ -252,10 +311,11 @@ Un tableau:
 | 中文       | Charlie |
 | 👩‍❤️‍👩 | Delta   |`}</Markdown>
 
-		<Markdown quotePosition="center">{`> Voilà une citation en Markdown`}</Markdown>
-		<Markdown textPosition="center">{`~~Du texte barré grâce au plugin Remark-gfm~~`}</Markdown>
-		<Markdown codePosition="center">{
-`~~~
+		<Markdown id="1" quotePosition="center">{`> Voilà une citation en Markdown`}</Markdown>
+		<Markdown id="1" textPosition="center">{`~~Du texte barré grâce au plugin Remark-gfm~~`}</Markdown>
+		<Markdown id="2" codePosition="center">{
+`**Du code:**
+~~~
 #include <iostream>
 
 using namespace std;
@@ -266,8 +326,9 @@ int main(){
 }
 ~~~
 `}</Markdown>
+	<Markdown id="2">{`![Texte alternatif](/amogus.png "Une image en Markdown et son texte")`}</Markdown>
 		
-	</Slide>
+	</SlideTwoColumns>
 ]
 
 export default function Deck(){

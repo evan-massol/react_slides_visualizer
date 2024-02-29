@@ -5,18 +5,20 @@ import remarkGfm from 'remark-gfm';
 import Code from './Code';
 import classNames from 'classnames';
 import { textColors, textSizes } from '../css/textStyle';
+import { bgColors } from '../css/backgroundStyle';
 
 export default function Markdown({titleColor="black", textColor="black",
                                   backgroundColorTitle="",
                                   backgroundColorText="", textSize="3",
-                                  textPosition="left", titlePosition="center",
+                                  textPosition="center", titlePosition="center",
                                   marginTopTitle="auto", marginLeftTitle="auto", 
                                   marginBottomTitle="auto", marginRightTitle="auto",
                                   marginTopText="auto", marginLeftText="auto", 
                                   marginBottomText="auto", marginRightText="auto",
                                   codeLanguage="cpp", codeTheme="vscDarkPlus",
                                   codePosition="center", codeWrapLines=false,
-                                  tableAlign="left", quotePosition="left", children}){
+                                  tableAlign="left", quotePosition="left", 
+                                  imageColor="", imageTextAlign="center", children}){
 
   const tableContainerStyle = classNames(
                                 `${textColors[textColor]}`,
@@ -29,9 +31,17 @@ export default function Markdown({titleColor="black", textColor="black",
                                 }
                               );
 
+  const imageStyle = classNames(`${bgColors[imageColor]}`);
+
+  const textStyle = classNames(
+                        `text-sm
+                        text-gray-500
+                        text-${imageTextAlign}`
+                      );
+
   const quoteStyle = classNames(`text-${quotePosition} sticky`);
 
-  const listContainer = classNames(`text-${textPosition} sticky`)
+  const listContainer = classNames(`text-${textPosition} sticky`);
 	
 	const unorderedStyle = classNames(`
                               inline-block
@@ -87,6 +97,18 @@ export default function Markdown({titleColor="black", textColor="black",
                                       marginTop={marginTopText} marginLeft={marginLeftText}
                                       marginBottom={marginBottomText} marginRight={marginRightText}
                                       position={textPosition} {...props} />,
+
+    img: ({ alt, src, title }) => (
+                                    <span>
+                                      <img
+                                        className="sticky inline align-middle"
+                                        src={src}
+                                        alt={alt}
+                                        title={title}
+                                      />
+                                      {title && <span className="text-center block text-sm mt-0.5 text-gray-700">{title}</span>}
+                                    </span>
+                                  ),
   
 
     blockquote: ({ ...props}) => <div className={quoteStyle}>
@@ -119,5 +141,5 @@ export default function Markdown({titleColor="black", textColor="black",
     <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
       {children}
     </ReactMarkdown>
-  )
+  );
 }

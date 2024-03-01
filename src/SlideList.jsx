@@ -12,62 +12,125 @@ import Markdown from "./components/Markdown";
 import CenteredSlide from "./components/CenteredSlide";
 
 export const slides = [
-	<Slide >
-		<Title size="h1">Titre de la slide 1</Title>
-		<Text size="6" position="center" height="center">
-			Voilà un premier texte
+	<CenteredSlide >
+		<Title size="h1" marginBottom="5">Visualiseur de Slides</Title>
+		<Text size="6">
+			Réalisé en React par Evan MASSOL
 		</Text>
-	</Slide>,
+		<Markdown textSize="5" textColor="cyan">{
+`**Utilise les bibliothèques externes**:  
+- [x] __react-markdown__  
+- [x] __react-syntax-highlighter__
+
+(oui, ceci est du **Markdown**)
+`}</Markdown>
+	</CenteredSlide>,
 
 	<Slide>
-		<Title size="h2">Titre de la slide 2</Title>
-		<Text size="5" position="center" height="center">
-			Voilà un second texte
-		</Text>
+		<Text position="right" height="top">{`Texte aligné en haut à droite`}</Text>
+		<Text>Texte aligné en haut à gauche</Text>
+		<Title size="h2" position="center" height="center">Personnalisation des alignements</Title>
+		<Text marginTop="14" position="center" height="center">Voilà un texte avec un props 'marginTop' égal à 14 par rapport au centre de la slide, pour espacer avec le titre.</Text>
+
+		<Text height="bottom">Texte aligné en bas à gauche</Text>
+		<Text height="bottom" position="right">Texte aligné en bas à droite</Text>
+
 	</Slide>,
 
 	<CenteredSlide >
-		<Title size="h3">Titre de la slide 3</Title>
+		<Title size="h3">Une slide avec du contenu centré</Title>
 		<Text size="4">
-			Voilà un troisième texte<Image src="/amogus.png" height="bottom"/>
+			Voilà une image centrée grâce au composant 'CenteredSlide'
 		</Text>
+		<Image src="/amogus.png"/>
+		<Text marginBottom="5" marginTop="5">Et même un tableau avec des cellules vides, ou non renseignées!</Text>
+		<Table table={[["Ligne 1", "Element de la ligne 1", "Un autre élément de la ligne"],
+									 ["Une autre ligne", "Un autre élément", ""],
+									 ["Une dernière pour la route"]]} 
+									 borderColor="blue" borderThickness="3" borderCellThickness="4" borderCellColor="red"/>
 	</CenteredSlide>,
 
 	<Slide >
-		<Title size="h4">Titre de la slide 4</Title>
-		<Image src="/amogus.png"/>
-	</Slide>,
-
-	<Slide >
-		<Title size="h5">Titre de la slide 5</Title>
+		<Title size="h4">Des images...mais avec leur texte !</Title>
 		<Figure src="/amogus.png" text="Un exemple de figure"/>
 	</Slide>,
-
-	<Slide >
-		<Title size="h3">Titre de la slide 6</Title>
-		<Table table={[["Ligne 1", "Contenu suivant", "Lorem ipsum"],
-						["Ligne 2", "Contenu numéro 2", "autre chose"]]}
-						borderCellColor="cyan"/>
-	</Slide>,
 	
-	<Slide >
-		<Title size="h4">Titre de la slide 7</Title>
-		<NumberedList elements={["Première puce", 
-														 "Deuxième puce", 
-														 "Troisième puce"]} color="cyan" position="center" size="5"/>
-	</Slide>,
+	<Slide>
+		<Title id="1" size="h4" >Voilà des listes à puces !</Title>
+		<SlideTwoColumns >
+			<Text id="1" position="center" size="5">D'abord une liste numérotée:</Text>
+			<NumberedList id="1" elements={["Première puce", 
+															"Deuxième puce", 
+															"Troisième puce"]} color="green" position="center" size="5"/>
+			<Code id="1" language="jsx" >{
+`import classNames from "classnames";
+import { textSizes } from "../css/textStyle";
+import { textColors } from "../css/textStyle";
 
-	<Slide >
-		<Title size="h5">Titre de la slide 8</Title>
-		<BulletedList elements={["Première puce", 
-														 "Deuxième puce", 
-														 "Troisième puce"]} color="cyan" position="center" size="5"/>
+export default function NumberedList({elements=["Premier", "Deuxième", "Troisième"],
+                                        size="3", color="black", position="left"}){
+    
+	const numbersStyle = classNames(\`list-decimal list-inside\`)
+	
+	const listStyle = classNames(\`\${textSizes[size]}
+								 \${textColors[color]}
+								 text-\${position}
+								 w-auto
+								 break-words
+								 hyphens-auto\`);
+	
+	const list = elements.map((element, index) =>
+		<li className={listStyle} key={index}>{element}</li>
+	) ;
+
+	return (
+		<ol className={numbersStyle}>
+				{list}
+		</ol>
+	)
+}`}</Code>
+
+			<Text id="2" size="5" position="center">Puis une liste non ordonnée:</Text>
+			<BulletedList id="2" elements={["Première puce", 
+															"Deuxième puce", 
+															"Troisième puce"]} color="red" position="center" size="5"/>
+			<Code id="2" language="jsx" >{
+`import classNames from "classnames";
+import { textSizes } from "../css/textStyle";
+import { textColors } from "../css/textStyle";
+
+export default function BulletedList({elements=["Premier", "Deuxième", "Troisième"],
+                                        size="3", color="black", position="left"}){
+    
+	const numbersStyle = classNames(\`list-disc list-inside\`)
+	
+	const listStyle = classNames(\`\${textSizes[size]} 
+								 \${textColors[color]}
+								 text-\${position}
+								 w-auto
+								 break-words
+								 hyphens-auto\`);
+	
+	const list = elements.map((element, index) =>
+		<li className={listStyle} key={index}>{element}</li>
+	) ;
+
+	return (
+		<ul className={numbersStyle}>
+				{list}
+		</ul>
+	)
+}`}</Code>
+		</SlideTwoColumns>
+		<Text id="2" size="6" position="center" marginTop="10">Voici leurs codes respectifs</Text>
+		<Text id="2" size="6" position="center">(avec le Composant 'Code' !):</Text>
+
 	</Slide>,
 
 	<SlideTwoColumns>
 		<Title id="1" size="h3">Titre dans la colonne de gauche</Title>
-		<Text id="1" size="3" position="center" marginTop="2">
-			Un peu de code ne ferait pas de mal non?
+		<Text id="1" size="4" position="center" marginTop="10" marginBottom="16">
+			Un peu plus de code ne ferait pas de mal non?
 		</Text>
 		<Code id="1" language="jsx" position="center">{
 `import classNames from 'classnames';
@@ -86,9 +149,8 @@ export default function Code({language="cpp", position="center",
         {children}
       </Prism>
     </div>
-  )
-}
-		`}</Code>
+  );
+}`}</Code>
 		<Title id="2" size="h3">Titre dans la colonne de droite</Title>
 		<Text id="2" size="3" position="center" marginTop="2">
 			Ce code montrant mon code pour les slides à deux colonnes possède la propriété wrapLines=True, les longues lignes sont coupées !
@@ -102,8 +164,8 @@ import classNames from "classnames";
 
 export default function SlideTwoColumns({children}) {
 	const { state } = useContext(PagesContext);
-  const leftColumnContent = [];
-  const rightColumnContent = [];
+	const leftColumnContent = [];
+	const rightColumnContent = [];
 
   children.map((child, index) => {
     const { id } = child.props;
@@ -141,8 +203,8 @@ export default function SlideTwoColumns({children}) {
 		`}</Code>
 	</SlideTwoColumns>,
 
-	<Slide >
-		<Title size="h3">Un peu de code d'un langage différent avec des sliders !</Title>
+	<CenteredSlide >
+		<Title size="h3" marginBottom="14">Un peu de code d'un langage différent avec des sliders !</Title>
 		<Code language="renpy" position="center">{
 `layeredimage junichi base:
 
@@ -285,7 +347,7 @@ export default function SlideTwoColumns({children}) {
 			attribute ba:
 					"mod_assets/MPT/Junichi/Expressions/Eyebrows/ba.png" # lowered eyebrows
 		`}</Code>
-	</Slide>,
+	</CenteredSlide>,
 
 	<SlideTwoColumns>
 		<Markdown id="1" titleColor="red" marginBottom="10">{`## Présentation du Markdown`}</Markdown>
@@ -314,7 +376,7 @@ Un tableau:
 
 		<Markdown id="1" quotePosition="center">{`> Voilà une citation en Markdown`}</Markdown>
 		<Markdown id="1" textPosition="center">{`~~Du texte barré grâce au plugin Remark-gfm~~`}</Markdown>
-		<Markdown id="2" codePosition="center">{
+		<Markdown id="2" codePosition="center" marginTopText="24">{
 `**Du code:**
 ~~~
 #include <iostream>
@@ -329,5 +391,145 @@ int main(){
 `}</Markdown>
 	<Markdown id="2">{`![Texte alternatif](/amogus.png "Une image en Markdown et son texte")`}</Markdown>
 		
-	</SlideTwoColumns>
+	</SlideTwoColumns>,
+
+	<CenteredSlide>
+		<Title size="h5" marginBottom="2">Code du composant Markdown</Title>
+		<Code language="jsx">{
+`import ReactMarkdown from 'react-markdown';
+import Title from './Title';
+import Text from './Text';
+import remarkGfm from 'remark-gfm';
+import Code from './Code';
+import classNames from 'classnames';
+import { textColors, textSizes } from '../css/textStyle';
+import { bgColors } from '../css/backgroundStyle';
+
+export default function Markdown({titleColor="black", textColor="black",
+								  backgroundColorTitle="",
+								  backgroundColorText="", textSize="3",
+								  textPosition="center", titlePosition="center",
+								  marginTopTitle="auto", marginLeftTitle="auto", 
+								  marginBottomTitle="auto", marginRightTitle="auto",
+								  marginTopText="auto", marginLeftText="auto", 
+								  marginBottomText="auto", marginRightText="auto",
+								  codeLanguage="cpp", codeTheme="vscDarkPlus",
+								  codePosition="center", codeWrapLines=false,
+								  tableAlign="left", quotePosition="left", 
+								  children}){
+
+  const tableContainerStyle = classNames(\`\${textColors[textColor]}\`,
+										'flex',
+										'items-center',
+										{
+											'justify-start': tableAlign === 'left',
+											'justify-end': tableAlign === 'right',
+											'justify-center': tableAlign === 'center'
+										}
+										);
+
+  const quoteStyle = classNames(\`text-\${quotePosition} sticky\`);
+
+  const listContainer = classNames(\`text-\${textPosition} sticky\`);
+	
+	const unorderedStyle = classNames(\`inline-block
+									  \${textSizes[textSize]}
+									  \${textColors[textColor]}
+									  hyphens-auto
+									  list-disc
+									  list-inside
+									  \`);
+
+  const orderedStyle = classNames(\`inline-block
+                                  \${textSizes[textSize]}
+                                  \${textColors[textColor]}
+                                  hyphens-auto 
+                                  list-decimal 
+                                  list-inside
+                                \`);
+
+  const components = {
+    h1: ({ node, ...props }) => <Title size="h1" color={titleColor} backgroundColor={backgroundColorTitle}
+                                      marginTop={marginTopTitle} marginLeft={marginLeftTitle}
+                                      marginBottom={marginBottomTitle} marginRight={marginRightTitle}
+                                      position={titlePosition} {...props} />,
+
+    h2: ({ ...props }) => <Title size="h2" color={titleColor} backgroundColor={backgroundColorTitle}
+                                      marginTop={marginTopTitle} marginLeft={marginLeftTitle}
+                                      marginBottom={marginBottomTitle} marginRight={marginRightTitle}
+                                      position={titlePosition} {...props} />,
+
+    h3: ({ ...props }) => <Title size="h3" color={titleColor} backgroundColor={backgroundColorTitle}
+                                      marginTop={marginTopTitle} marginLeft={marginLeftTitle}
+                                      marginBottom={marginBottomTitle} marginRight={marginRightTitle}
+                                      position={titlePosition} {...props} />,
+
+    h4: ({ ...props }) => <Title size="h4" color={titleColor} backgroundColor={backgroundColorTitle}
+                                      marginTop={marginTopTitle} marginLeft={marginLeftTitle}
+                                      marginBottom={marginBottomTitle} marginRight={marginRightTitle}
+                                      position={titlePosition} {...props} />,
+
+    h5: ({ ...props }) => <Title size="h5" color={titleColor} backgroundColor={backgroundColorTitle}
+                                      marginTop={marginTopTitle} marginLeft={marginLeftTitle}
+                                      marginBottom={marginBottomTitle} marginRight={marginRightTitle}
+                                      position={titlePosition} {...props} />,
+
+    h6: ({ ...props }) => <Title size="h6" color={titleColor} backgroundColor={backgroundColorTitle}
+                                      marginTop={marginTopTitle} marginLeft={marginLeftTitle}
+                                      marginBottom={marginBottomTitle} marginRight={marginRightTitle}
+                                      position={titlePosition} {...props} />,
+
+    a: ({ href, children }) => <a href={href}>{children}</a>,
+
+    p: ({ ...props }) => <Text size={textSize} color={textColor} backgroundColor={backgroundColorText}
+                                      marginTop={marginTopText} marginLeft={marginLeftText}
+                                      marginBottom={marginBottomText} marginRight={marginRightText}
+                                      position={textPosition} {...props} />,
+
+    img: ({ alt, src, title }) => (<span>
+                                      <img
+                                        className="sticky inline align-middle"
+                                        src={src}
+                                        alt={alt}
+                                        title={title}
+                                      />
+                                      {title && 
+									<span className="text-center block text-sm mt-0.5 text-gray-700">{title}</span>}
+                                    </span>
+                                  ),
+  
+
+    blockquote: ({ ...props}) => <div className={quoteStyle}>
+                                    <blockquote className="bg-gray-100 border-l-4 border-gray-500
+														   my-4 pl-px inline-block" {...props}></blockquote>
+                                  </div>,
+
+    code: ({ ...props }) => <Code language={codeLanguage} position={codePosition} 
+                                  theme={codeTheme} wrapLines={codeWrapLines} {...props}/>,
+
+    table: ({ children }) => (
+      <div className={tableContainerStyle}>
+        <table className="table-auto border-collapse border border-gray-300">
+          {children}
+        </table>
+      </div>
+    ),
+
+    ul: ({  ...props }) => <div className={listContainer}>
+                              <ul className={unorderedStyle} {...props} />
+                            </div>,
+
+    ol: ({  ...props }) => <div className={listContainer}>
+                              <ol className={orderedStyle} {...props} />
+                            </div>
+
+  };
+
+  return (
+    <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
+      {children}
+    </ReactMarkdown>
+  );
+}`}</Code>
+	</CenteredSlide>
 ];

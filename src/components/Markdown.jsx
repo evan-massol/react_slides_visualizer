@@ -18,7 +18,7 @@ export default function Markdown({titleColor="black", textColor="black",
                                   codeLanguage="cpp", codeTheme="vscDarkPlus",
                                   codePosition="center", codeWrapLines=false,
                                   tableAlign="left", quotePosition="left", 
-                                  imageColor="", imageTextAlign="center", children}){
+                                  children}){
 
   const tableContainerStyle = classNames(
                                 `${textColors[textColor]}`,
@@ -30,14 +30,6 @@ export default function Markdown({titleColor="black", textColor="black",
                                   'justify-center': tableAlign === 'center'
                                 }
                               );
-
-  const imageStyle = classNames(`${bgColors[imageColor]}`);
-
-  const textStyle = classNames(
-                        `text-sm
-                        text-gray-500
-                        text-${imageTextAlign}`
-                      );
 
   const quoteStyle = classNames(`text-${quotePosition} sticky`);
 
@@ -98,8 +90,7 @@ export default function Markdown({titleColor="black", textColor="black",
                                       marginBottom={marginBottomText} marginRight={marginRightText}
                                       position={textPosition} {...props} />,
 
-    img: ({ alt, src, title }) => (
-                                    <span>
+    img: ({ alt, src, title }) => (<span>
                                       <img
                                         className="sticky inline align-middle"
                                         src={src}

@@ -1,11 +1,12 @@
 import classNames from "classnames";
 import { bgColors } from "../css/backgroundStyle";
-import { borderStyles } from "../css/tableStyle";
+import { borderStyles, borderThicknesses } from "../css/tableStyle";
 import { textColors } from "../css/textStyle";
 import { heightStyles } from "../css/textHeights";
 
 export default function Table({table="", position="center", height="top", alignCells="center", borderColor="black",
-                              borderCellColor="black", backgroundColor="", textColor="black"}){
+                              borderCellColor="black", backgroundColor="", textColor="black", borderThickness="1",
+                              borderCellThickness="1"}){
 
   const tableContainerStyle = classNames(
                               `text-${position} sticky
@@ -16,16 +17,16 @@ export default function Table({table="", position="center", height="top", alignC
                     inline-block
                     ${bgColors[backgroundColor]}
                     ${borderStyles[borderColor]}
-                    border
                     border-spacing-2
                     border-separate
+                    ${borderThicknesses[borderThickness]}
                     table-auto`);
 
   const cellStyle = classNames(`
-                    border
                     border-spacing-2
                     ${borderStyles[borderCellColor]}
                     ${textColors[textColor]}
+                    ${borderThicknesses[borderCellThickness]}
                     `,
                     {
                       'text-center': alignCells === "center",

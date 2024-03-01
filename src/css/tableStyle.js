@@ -32,4 +32,19 @@ export const borderStyles = {
 	"brown": "border-yellow-950",
 
 	"white": "border-white"
-}
+};
+
+export const borderThicknesses = {
+	"" : "border-0",
+	"0" : "border-0",
+	"1" : "border-[1px]",
+	"2" : "border-2",
+	"3" : "border-[3px]",
+	"4" : "border-4",
+	"5" : "border-[5px]",
+	"6" : "border-[6px]",
+	"7" : "border-[7px]",
+	"8" : "border-8",
+	"9" : "border-[9px]",
+	"10" : "border-[10px]"
+};

@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PagesContext } from "./contexts/PageContext";
+import Mosaic from "./Mosaic";
 
 export default function Navbar(){
 	const { state, dispatch } = useContext(PagesContext);
+	const [ displayMosaic, setDisplayMosaic ] = useState(false);
 	
 	const handleFirstSlide = () => {
         dispatch({ type: "firstSlide" });
@@ -31,13 +33,18 @@ export default function Navbar(){
 			}
 	};
 
+	const changeDisplayMosaic = () => {
+		setDisplayMosaic(!displayMosaic);
+	};
+
 	return (
 		<nav>
-			<div className="absolute left-3 top-2">
-				<button>
+			<div className="absolute left-3 top-2 z-50">
+				<button className="hover:scale-110 hover:duration-300 duration-300" onClick={changeDisplayMosaic}>
 					<img className="size-10 bg-white rounded-md" src="/list.svg"/>
 				</button>
 			</div>
+			<Mosaic displayed={displayMosaic}/>
 			<div className="flex justify-center font-normal border-2 rounded-xl py-2">
 				<button className="pr-2 pl-3 bg-white rounded-l-lg p-0.5 text-2xl transition ease-in-out hover:bg-neutral-500 hover:text-white"
 					onClick={handleFirstSlide}>

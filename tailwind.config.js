@@ -6,14 +6,13 @@ export default {
   ],
   theme: {
     extend: {
-      height:{
+      height: {
         "96": "90%"
       },
-      maxHeight:{
+      maxHeight: {
         "96": "90%"
       }
     },
   },
   plugins: [],
 }
-

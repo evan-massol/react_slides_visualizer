@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { PagesContext } from "../contexts/PageContext"
-import { slides } from "../Deck";
+import { slides } from "../SlideList";
 import Text from "./Text";
 import classNames from "classnames";
 
@@ -26,9 +26,9 @@ export default function SlideTwoColumns({children}) {
     }
   });
 
-  const columnStyle1 = classNames(`inline-block w-1/2 pb-12 h-full absolute left-0`);
+  const columnStyle1 = classNames(`inline-block w-1/2 pb-16 h-full pl-1 absolute left-0`);
 
-  const columnStyle2 = classNames(`inline-block w-1/2 pb-12 h-full absolute right-0`);
+  const columnStyle2 = classNames(`inline-block w-1/2 pb-16 h-full pr-1 absolute right-0`);
 
 	return (
 		<>
@@ -38,7 +38,7 @@ export default function SlideTwoColumns({children}) {
       <div className={columnStyle2}>
         {rightColumnContent}
       </div>
-			{!state.isHidden && <div id="numPage" className="absolute bottom-0 right-0 p-4 text-lg">{state.currentSlide}/{slides.length}</div>}
+			{!state.isHidden && <div id="numPage" className="absolute bottom-0 left-[48%] p-1 text-lg">{state.currentSlide}/{slides.length}</div>}
 		</>
 	);
 }

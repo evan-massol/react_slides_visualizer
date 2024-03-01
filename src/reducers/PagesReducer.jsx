@@ -1,4 +1,4 @@
-import { slides } from "../Deck";
+import { slides } from "../SlideList";
 
 export default function reducer(state, action){
 	switch(action.type){

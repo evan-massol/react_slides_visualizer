@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { PagesContext } from "../contexts/PageContext";
 import { useContext } from "react";
-import { slides } from "../Deck";
+import { slides } from "../SlideList";
 
 export default function CenteredSlide({children}){
   const { state } = useContext(PagesContext)
@@ -13,7 +13,7 @@ export default function CenteredSlide({children}){
       <div className={centeredContainer}>
         {children}
       </div>
-      {!state.isHidden && <div id="numPage" className="absolute bottom-0 right-0 p-4 text-lg">{state.currentSlide}/{slides.length}</div>}
+      {!state.isHidden && <div id="numPage" className="absolute bottom-0 left-[48%] p-1 text-lg">{state.currentSlide}/{slides.length}</div>}
     </>
     
   )

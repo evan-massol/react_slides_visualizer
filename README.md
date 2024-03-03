@@ -47,7 +47,8 @@ export const slides = [
 
 Vous allez simplement pouvoir remplir cette liste avec des composants `Slide`, `CenteredSlide` ou `SlideTwoColumns` (qui agissent comme des conteneurs), dans lesquels vous allez pouvoir mettre d'autres composants en tant que `children` de ces derniers.  
 Chaque slide sera séparée par une virgule obligatoirement.  
-Plusieurs *`props`* sont disponibles pour chaque composant afin de personnaliser au maximum vos slides (voir les composants directement).
+Plusieurs *`props`* sont disponibles pour chaque composant afin de personnaliser au maximum vos slides (voir les composants directement).  
+Pour les images (composants `Image`, `Figure` et `Markdown`), elles doivent être placées dans le dossier `/public`.
 
 ### Déploiement
 

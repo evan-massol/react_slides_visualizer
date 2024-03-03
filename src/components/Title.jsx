@@ -6,11 +6,10 @@ import { marginTopStyles, marginLeftStyles, marginBottomStyles, marginRightStyle
 
 export default function Title({size="h1", color="black", position="center", 
                               height="top", backgroundColor="", 
-                              marginTop="auto", marginLeft="auto", 
-                              marginBottom="auto", marginRight="auto",children}){
+                              marginTop="0", marginLeft="0", 
+                              marginBottom="0", marginRight="0",children}){
 
-  const containerStyle = classNames(`text-${position} sticky ${heightStyles[height]}
-                                    `);
+  const containerStyle = classNames(`text-${position} sticky ${heightStyles[height]}`);
 
   const titleStyle = classNames(
                       `${titleStyles[size]}

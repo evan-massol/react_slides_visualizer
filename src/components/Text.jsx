@@ -7,8 +7,8 @@ import { marginTopStyles, marginBottomStyles, marginLeftStyles, marginRightStyle
 
 export default function Text({size="3", color="black", position="left",
                               height="top", backgroundColor="", 
-                              marginTop="auto", marginLeft="auto", 
-                              marginBottom="auto", marginRight="auto", children}){
+                              marginTop="0", marginLeft="0", 
+                              marginBottom="0", marginRight="0", children}){
   
   const containerStyle = classNames(`text-${position} sticky ${heightStyles[height]}`);
 

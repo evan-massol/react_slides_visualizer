@@ -5,8 +5,8 @@ import { marginBottomStyles, marginLeftStyles, marginRightStyles, marginTopStyle
 
 export default function NumberedList({elements=["Premier", "Deuxième", "Troisième"],
                                         size="3", color="black", position="left",
-																				marginTop="auto", marginLeft="auto", 
-																				marginBottom="auto", marginRight="auto"}){
+																				marginTop="0", marginLeft="0", 
+																				marginBottom="0", marginRight="0"}){
     
 	const numbersStyle = classNames(`list-decimal list-inside
 																	${marginTopStyles[marginTop]}

@@ -26,6 +26,14 @@ export const slides = [
 `}</Markdown>
 	</CenteredSlide>,
 
+	<CenteredSlide>
+		<Title size="h3" marginBottom="5">Liste des Composants disponibles</Title>
+		<BulletedList elements={["BulletedList", "CenteredSlide", "Code", 
+														"Figure", "Image", "Markdown", "NumberedList",
+														"Slide", "SlideTwoColumn", "Table", "Text", "Title"]} size="5" color="darkCyan"></BulletedList>
+		
+	</CenteredSlide>,
+
 	<Slide>
 		<Text position="right" height="top">{`Texte aligné en haut à droite`}</Text>
 		<Text>Texte aligné en haut à gauche</Text>

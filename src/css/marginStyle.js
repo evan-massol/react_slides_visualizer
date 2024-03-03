@@ -1,5 +1,6 @@
 export const marginTopStyles = {
     "auto" : "mt-auto",
+    "0" : "mt-0",
     "1" : "mt-1",
     "2" : "mt-2",
     "3" : "mt-3",
@@ -33,6 +34,7 @@ export const marginTopStyles = {
 
 export const marginLeftStyles = {
     "auto" : "ml-auto",
+    "0" : "ml-0",
     "1" : "ml-1",
     "2" : "ml-2",
     "3" : "ml-3",
@@ -66,6 +68,7 @@ export const marginLeftStyles = {
 
 export const marginRightStyles = {
     "auto" : "mr-auto",
+    "0" : "mr-0",
     "1" : "mr-1",
     "2" : "mr-2",
     "3" : "mr-3",
@@ -99,6 +102,7 @@ export const marginRightStyles = {
 
 export const marginBottomStyles = {
     "auto" : "mb-auto",
+    "0" : "mb-0",
     "1" : "mb-1",
     "2" : "mb-2",
     "3" : "mb-3",

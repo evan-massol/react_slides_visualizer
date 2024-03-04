@@ -2,6 +2,8 @@ import { slides } from "./SlideList";
 import { PagesContext } from "./contexts/PageContext";
 import { useContext } from "react";
 
+//Ce composant gère l'affichage de la slide courante dans la page ainsi
+//que le numéro de diapositive.
 export default function Deck(){
 	const { state } = useContext(PagesContext);
 

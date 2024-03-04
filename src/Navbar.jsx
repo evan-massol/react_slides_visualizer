@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { PagesContext } from "./contexts/PageContext";
 import Mosaic from "./Mosaic";
 
+//Cette fonction gère toute la barre de navigation de l'application.
+//Elle utilise le contexte des pages ainsi qu'un useState pour afficher/
+//cacher la mosaïque.
 export default function Navbar(){
 	const { state, dispatch } = useContext(PagesContext);
 	const [ displayMosaic, setDisplayMosaic ] = useState(false);

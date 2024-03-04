@@ -4,6 +4,7 @@ import { bgColors } from "../css/backgroundStyle.js";
 import { heightStyles } from "../css/textHeights.js";
 import { marginTopStyles, marginLeftStyles, marginBottomStyles, marginRightStyles } from "../css/marginStyle.js";
 
+//Ce composant permet d'écrire des titres dans les slides.
 export default function Title({size="h1", color="black", position="center", 
                               height="top", backgroundColor="", 
                               marginTop="0", marginLeft="0", 

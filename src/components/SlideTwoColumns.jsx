@@ -2,6 +2,8 @@ import React from "react"
 import Text from "./Text";
 import classNames from "classnames";
 
+//Ce composant conteneur permet de placer d'autres composants
+//dans deux colonnes distinctes ayant la même largeur.
 export default function SlideTwoColumns({children}) {
   const leftColumnContent = [];
   const rightColumnContent = [];

@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { bgColors } from "../css/backgroundStyle";
 import { imageHeights } from "../css/imageHeights";
 
+//Ce composant permet de créer des images dans les slides.
 export default function Image({src="public/react.svg", position="center", imageColor="", 
                               height="center", imageWidth=null}){
   

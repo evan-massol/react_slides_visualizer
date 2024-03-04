@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { PagesContext } from "./contexts/PageContext";
 import { slides } from "./SlideList";
 
+//Ce composant gère l'affichage de la mosaïque dans l'application.
+//Cette dernière contient les numéros de slides et l'utilisateur peut cliquer
+//dessus pour changer de diapositive.
 export default function Mosaic({displayed}){
   const { state, dispatch } = useContext(PagesContext);
 

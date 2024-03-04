@@ -3,6 +3,7 @@ import { textColors, textSizes } from "../css/textStyle";
 import { bgColors } from "../css/backgroundStyle";
 import { imageHeights } from "../css/imageHeights";
 
+//Ce composant permet de créer des figures (image + légende) dans les slides.
 export default function Figure({text="", textSize="3", textAlign="center", textColor="black", 
                                 src="public/react.svg", position="center", imageColor="",
                                 height="center", alt="Texte alternatif", imageWidth=null}){

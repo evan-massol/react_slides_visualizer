@@ -5,8 +5,10 @@ import remarkGfm from 'remark-gfm';
 import Code from './Code';
 import classNames from 'classnames';
 import { textColors, textSizes } from '../css/textStyle';
-import { bgColors } from '../css/backgroundStyle';
 
+//Ce composant permet de créer du Markdown dnas les slides.
+//Plusieurs composants personnalisés sont réutilisés ici au travers
+//des props du composant.
 export default function Markdown({titleColor="black", textColor="black",
                                   backgroundColorTitle="",
                                   backgroundColorText="", textSize="3",

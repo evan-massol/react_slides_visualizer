@@ -4,6 +4,7 @@ import { borderStyles, borderThicknesses } from "../css/tableStyle";
 import { textColors } from "../css/textStyle";
 import { heightStyles } from "../css/textHeights";
 
+//Ce composant permet de créer un tableau dans les slides.
 export default function Table({table="", position="center", height="top", alignCells="center", borderColor="black",
                               borderCellColor="black", backgroundColor="", textColor="black", borderThickness="1",
                               borderCellThickness="1"}){

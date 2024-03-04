@@ -3,6 +3,7 @@ import { Prism } from 'react-syntax-highlighter';
 import * as styles from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { codeAlign } from '../css/codeAlign'
 
+//Ce composant permet de créer des blocs de code dans les slides
 export default function Code({language="cpp", position="center", 
                               theme="vscDarkPlus", wrapLines=false, children}){
 

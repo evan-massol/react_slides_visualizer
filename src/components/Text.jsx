@@ -4,7 +4,7 @@ import { bgColors } from "../css/backgroundStyle.js";
 import { heightStyles } from "../css/textHeights.js";
 import { marginTopStyles, marginBottomStyles, marginLeftStyles, marginRightStyles } from "../css/marginStyle.js";
 
-
+//Ce composant permet d'écrire des textes/paragraphes dans les slides.
 export default function Text({size="3", color="black", position="left",
                               height="top", backgroundColor="", 
                               marginTop="0", marginLeft="0", 

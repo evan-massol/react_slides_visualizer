@@ -1,10 +1,8 @@
-import React, { useContext } from "react"
-import { PagesContext } from "../contexts/PageContext"
+import React from "react"
 import Text from "./Text";
 import classNames from "classnames";
 
 export default function SlideTwoColumns({children}) {
-	const { state } = useContext(PagesContext);
   const leftColumnContent = [];
   const rightColumnContent = [];
 

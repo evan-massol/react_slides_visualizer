@@ -8,7 +8,6 @@ export default function Slide({children}) {
 	return (
 		<div className="h-full">
 			{children}
-			{!state.isHidden && <div id="numPage" className="absolute bottom-0 left-[48%] p-1 text-lg">{state.currentSlide}/{slides.length}</div>}
 		</div>
 	);
 }

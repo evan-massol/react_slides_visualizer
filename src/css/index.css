@@ -5,4 +5,7 @@
     a{
         @apply text-blue-500 underline;
     }
+    body{
+        overflow-y: hidden;
+    }
 }
